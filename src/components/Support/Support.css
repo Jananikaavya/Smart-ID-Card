@@ -1,0 +1,136 @@
+/* ------------ MAIN CONTAINER ------------ */
+.support-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px 20px;
+  font-family: "Poppins", sans-serif;
+  color: #e3f6ff;
+}
+
+/* ------------ TITLES ------------ */
+.support-title {
+  text-align: center;
+  font-size: 38px;
+  font-weight: 700;
+  color: #00c6ff;
+  text-shadow: 0 0 10px rgba(0, 198, 255, 0.7);
+}
+
+.support-subtitle {
+  text-align: center;
+  margin-top: 10px;
+  color: #b8dfff;
+  font-size: 17px;
+}
+
+/* ------------ FAQ SECTION ------------ */
+.faq-section {
+  margin-top: 40px;
+  background: rgba(0, 40, 67, 0.4);
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.faq-section h2 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #8fe3ff;
+}
+
+/* FAQ Item */
+.faq-item {
+  background: rgba(0, 0, 0, 0.25);
+  padding: 15px 20px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.faq-item:hover {
+  background: rgba(0, 198, 255, 0.1);
+}
+
+.faq-question {
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+}
+
+.arrow {
+  font-size: 22px;
+}
+
+/* Answer */
+.faq-answer {
+  font-size: 16px;
+  margin-top: 10px;
+  color: #c2f1ff;
+  line-height: 1.5;
+}
+
+/* ------------ CONTACT SUPPORT SECTION ------------ */
+.contact-support {
+  margin-top: 50px;
+  background: rgba(0, 59, 88, 0.45);
+  padding: 30px;
+  border-radius: 18px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 12px rgba(0, 198, 255, 0.2);
+}
+
+.contact-support h2 {
+  text-align: center;
+  font-size: 28px;
+  color: #00e5ff;
+  margin-bottom: 10px;
+}
+
+.contact-support p {
+  text-align: center;
+  color: #bdeeff;
+  margin-bottom: 25px;
+}
+
+/* FORM STYLING */
+.support-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.support-form input,
+.support-form textarea {
+  width: 100%;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(0, 198, 255, 0.4);
+  border-radius: 10px;
+  color: #e8f9ff;
+  outline: none;
+  font-size: 16px;
+}
+
+.support-form textarea {
+  height: 140px;
+  resize: none;
+}
+
+.support-form button {
+  padding: 14px;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.support-form button:hover {
+  box-shadow: 0 0 12px rgba(0, 198, 255, 0.6);
+}

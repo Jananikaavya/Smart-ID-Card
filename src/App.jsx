@@ -9,7 +9,9 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Verify from './components/Verify/Verify';    // ✅ FIXED
 import Hero from './components/Hero/Hero';
 import Generate from './components/Generate/Generate';
+import Support from './components/Support/Support';
 import ViewID from './components/ViewID/ViewID';
+import Footer from './components/Footer/Footer';
 function Placeholder({ title }) {
   return (
     <div style={{ padding: 32, color: 'var(--text)' }}>
@@ -64,13 +66,14 @@ export default function App() {
             {/* Other placeholders */}
             <Route path="/generate" element={<Generate />} />
                 <Route path="/view-id" element={<ViewID />} />
-            <Route path="/support" element={<Placeholder title="Support" />} />
-            <Route path="*" element={<Placeholder title="Not Found" />} />
-
-          </Routes>
+            <Route path="/support" element={<Support/>} />
+             <Route path="*" element={<Placeholder title="Not Found" />} />
+        </Routes>
         </div>
-
+       
       </div>
+        <Footer/>
     </BrowserRouter>
+    
   );
 }
