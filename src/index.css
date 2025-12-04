@@ -1,0 +1,95 @@
+
+:root{
+	/* Palette */
+	--bg-1: #0a0f1f; /* deep */
+	--bg-2: #050a14; /* darker */
+	--neon-primary: #00eaff;
+	--accent: #4dd0ff;
+	--btn: #0099cc;
+	--heading: #ffffff;
+	--text: #cccccc;
+	--glass-bg: rgba(255,255,255,0.04);
+	--glass-border: rgba(255,255,255,0.06);
+}
+
+/* Base reset */
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{
+	margin:0;
+	font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+	color:var(--text);
+	background: linear-gradient(180deg,var(--bg-1),var(--bg-2));
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+}
+
+/* Full-page app wrapper */
+.app-root{min-height:100vh;position:relative;overflow:hidden}
+
+/* Background canvas that sits behind content */
+.bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none}
+
+/* Layered backgrounds: subtle grid, gradient glows, and an SVG overlay for circuit/lock icons */
+.bg-canvas::before{
+	content:'';position:absolute;inset:0;background:
+		radial-gradient(800px 400px at 10% 20%, rgba(0,234,255,0.06), transparent 10%),
+		radial-gradient(700px 350px at 90% 80%, rgba(77,208,255,0.04), transparent 10%),
+		linear-gradient(180deg, rgba(10,15,31,0.55), rgba(5,10,20,0.65));
+	mix-blend-mode: screen;opacity:1;filter:blur(18px);
+}
+
+/* Faint digital grid */
+.bg-canvas::after{
+	content:'';position:absolute;inset:0;background-image:
+		repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 40px),
+		repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 40px);
+	opacity:0.06;transform:scale(1.02);
+}
+
+/* Circuit + lock icons overlay using inline SVG for low opacity details */
+.bg-canvas .circuits{
+	position:absolute;inset:0;background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1600' height='900' viewBox='0 0 1600 900'><g fill='none' stroke='%2300eaff' opacity='0.05' stroke-width='1'><path d='M50 200 C200 100 400 300 600 200' /><path d='M200 700 C400 600 800 800 1200 700' /><path d='M1400 100 C1200 200 1000 50 700 150' /></g><g fill='%2300eaff' opacity='0.03'><rect x='120' y='140' width='22' height='24' rx='3'/><rect x='980' y='620' width='20' height='22' rx='3'/></g><g fill='%2300eaff' opacity='0.03'><path d='M300 300 h12 v12 h-12 z'/><path d='M600 400 h10 v10 h-10 z'/></g><g fill='%230e9fff' opacity='0.03'><g transform='translate(1300,150)'><rect x='0' y='0' width='32' height='28' rx='4' stroke='%2300eaff' fill='none'/><path d='M8 12 v-3 a8 8 0 0 1 16 0 v3' stroke='%2300eaff' fill='none'/></g></g></svg>");
+	background-repeat: no-repeat; background-size: cover; opacity:0.6; mix-blend-mode: overlay; pointer-events:none;filter:blur(0.5px);
+}
+
+/* Animated floating particles (subtle) */
+.bg-canvas .particles{position:absolute;inset:0;background-image:
+	radial-gradient(circle at 10% 20%, rgba(0,234,255,0.03) 0 2px, transparent 3px),
+	radial-gradient(circle at 80% 70%, rgba(77,208,255,0.02) 0 2px, transparent 4px),
+	radial-gradient(circle at 40% 50%, rgba(0,234,255,0.02) 0 1px, transparent 5px);
+	opacity:0.9;animation:particlesMove 18s linear infinite;filter:blur(1px);
+}
+
+@keyframes particlesMove{
+	0%{transform:translateY(0)}
+	50%{transform:translateY(-8px)}
+	100%{transform:translateY(0)}
+}
+
+/* Content should sit above background */
+.content{position:relative;z-index:2;padding:40px;max-width:1100px;margin:0 auto}
+
+/* Headings and text */
+.neon-text{color:var(--heading);font-size:28px;margin:0 0 8px 0;text-shadow:0 0 8px rgba(0,234,255,0.12),0 0 18px rgba(77,208,255,0.06)}
+.muted{color:var(--text);opacity:0.9}
+
+/* Neon button */
+.neon-btn{background:linear-gradient(180deg,var(--btn),#007aa0);color:#fff;padding:10px 14px;border-radius:8px;border:none;cursor:pointer;box-shadow:0 6px 18px rgba(0,153,204,0.12);transition:box-shadow .18s, transform .12s}
+.neon-btn:hover{box-shadow:0 12px 36px rgba(0,234,255,0.18),0 6px 18px rgba(0,153,204,0.12);transform:translateY(-2px)}
+
+/* Neon outline / glow utility */
+.neon-outline{border:1px solid rgba(0,234,255,0.14);box-shadow:0 0 20px rgba(0,234,255,0.04) inset}
+
+/* Glassmorphism card */
+.glass-card{background:var(--glass-bg);backdrop-filter:blur(6px);border:1px solid var(--glass-border);border-radius:12px;color:var(--heading)}
+
+/* Small responsive helpers */
+@media (max-width:780px){.content{padding:24px}}
+
+/* Cursor ripple placeholder (needs JS to attach events) */
+.ripple{position:relative;overflow:hidden}
+.ripple::after{content:'';position:absolute;left:50%;top:50%;width:0;height:0;background:radial-gradient(circle, rgba(0,234,255,0.12), transparent 40%);transform:translate(-50%,-50%);border-radius:50%;opacity:0;transition:width .4s,height .4s,opacity .4s}
+
+/* 3D tilt hint class (can be used with JS tilt libraries) */
+.tilt-card{transform-style:preserve-3d;transition:transform .25s}
